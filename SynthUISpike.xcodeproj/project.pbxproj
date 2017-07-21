@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		942879671F216F94001C75FF /* KnobStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942879661F216F94001C75FF /* KnobStyleKit.swift */; };
 		944156D61F2121CC00C139B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944156D51F2121CC00C139B9 /* AppDelegate.swift */; };
 		944156D81F2121CC00C139B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944156D71F2121CC00C139B9 /* ViewController.swift */; };
 		944156DB1F2121CC00C139B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 944156D91F2121CC00C139B9 /* Main.storyboard */; };
 		944156DD1F2121CC00C139B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 944156DC1F2121CC00C139B9 /* Assets.xcassets */; };
 		944156E01F2121CC00C139B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 944156DE1F2121CC00C139B9 /* LaunchScreen.storyboard */; };
+		944156EA1F21231C00C139B9 /* KnobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944156E91F21231C00C139B9 /* KnobView.swift */; };
+		944156F01F21254600C139B9 /* Knob+Touches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944156ED1F21254600C139B9 /* Knob+Touches.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		942879661F216F94001C75FF /* KnobStyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnobStyleKit.swift; sourceTree = "<group>"; };
 		944156D21F2121CC00C139B9 /* SynthUISpike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SynthUISpike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		944156D51F2121CC00C139B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		944156D71F2121CC00C139B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +26,8 @@
 		944156DC1F2121CC00C139B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		944156DF1F2121CC00C139B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		944156E11F2121CC00C139B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		944156E91F21231C00C139B9 /* KnobView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnobView.swift; sourceTree = "<group>"; };
+		944156ED1F21254600C139B9 /* Knob+Touches.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Knob+Touches.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +44,7 @@
 		944156C91F2121CC00C139B9 = {
 			isa = PBXGroup;
 			children = (
+				944156EB1F21253400C139B9 /* Knobs */,
 				944156D41F2121CC00C139B9 /* SynthUISpike */,
 				944156D31F2121CC00C139B9 /* Products */,
 			);
@@ -62,6 +69,16 @@
 				944156E11F2121CC00C139B9 /* Info.plist */,
 			);
 			path = SynthUISpike;
+			sourceTree = "<group>";
+		};
+		944156EB1F21253400C139B9 /* Knobs */ = {
+			isa = PBXGroup;
+			children = (
+				942879661F216F94001C75FF /* KnobStyleKit.swift */,
+				944156E91F21231C00C139B9 /* KnobView.swift */,
+				944156ED1F21254600C139B9 /* Knob+Touches.swift */,
+			);
+			name = Knobs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,6 +113,7 @@
 				TargetAttributes = {
 					944156D11F2121CC00C139B9 = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -138,6 +156,9 @@
 			files = (
 				944156D81F2121CC00C139B9 /* ViewController.swift in Sources */,
 				944156D61F2121CC00C139B9 /* AppDelegate.swift in Sources */,
+				942879671F216F94001C75FF /* KnobStyleKit.swift in Sources */,
+				944156F01F21254600C139B9 /* Knob+Touches.swift in Sources */,
+				944156EA1F21231C00C139B9 /* KnobView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +322,7 @@
 				944156E61F2121CC00C139B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
