@@ -1,7 +1,9 @@
 # SynthKnobExample
 
-Simple Example of AudioKit Synth Knobs
+Simple Example of AudioKit Synth Knobs. Vector based. Resize in Interface Builder!
 
 PaintCode file is included in main directory
 
-![knob in ib]({{site.baseurl}}/https://i.imgflip.com/1svkul.gif)
+
+
+![knob in ib](https://i.imgflip.com/1svkul.gif)
