@@ -19,16 +19,16 @@ public class KnobStyleKit : NSObject {
 
     //// Drawing Methods
 
-    @objc dynamic public class func drawKnobOne(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 120, height: 120), resizing: ResizingBehavior = .aspectFit, knobValue: CGFloat = 0.5) {
+    @objc dynamic public class func drawKnobOne(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 124, height: 124), resizing: ResizingBehavior = .aspectFit, knobValue: CGFloat = 0.5) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         
         //// Resize to Target Frame
         context.saveGState()
-        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 120, height: 120), target: targetFrame)
+        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 124, height: 124), target: targetFrame)
         context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
-        context.scaleBy(x: resizedFrame.width / 120, y: resizedFrame.height / 120)
-        let resizedShadowScale: CGFloat = min(resizedFrame.width / 120, resizedFrame.height / 120)
+        context.scaleBy(x: resizedFrame.width / 124, y: resizedFrame.height / 124)
+        let resizedShadowScale: CGFloat = min(resizedFrame.width / 124, resizedFrame.height / 124)
 
 
         //// Color Declarations
@@ -62,6 +62,7 @@ public class KnobStyleKit : NSObject {
 
         //// Knob
         context.saveGState()
+        context.translateBy(x: 3, y: 3)
 
 
 

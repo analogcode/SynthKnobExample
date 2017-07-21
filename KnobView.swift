@@ -61,7 +61,7 @@ class KnobView: UIView {
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         
-        contentMode = .center
+        contentMode = .scaleAspectFit
         clipsToBounds = true
     }
     
