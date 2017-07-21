@@ -61,7 +61,7 @@ class KnobView: UIView {
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         
-        contentMode = .scaleAspectFill
+        contentMode = .center
         clipsToBounds = true
     }
     
@@ -70,7 +70,7 @@ class KnobView: UIView {
     }
     
     override func draw(_ rect: CGRect) {
-        KnobStyleKit.drawKnobOne(knobValue: knobValue)
+        KnobStyleKit.drawKnobOne(frame: CGRect(x:0,y:0, width: self.bounds.width, height: self.bounds.height), knobValue: knobValue)
     }
     
     // Helper

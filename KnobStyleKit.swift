@@ -12,15 +12,24 @@
 //
 
 
+
 import UIKit
 
 public class KnobStyleKit : NSObject {
 
     //// Drawing Methods
 
-    @objc dynamic public class func drawKnobOne(frame: CGRect = CGRect(x: 39, y: 40, width: 120, height: 120), knobValue: CGFloat = 0.794) {
+    @objc dynamic public class func drawKnobOne(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 120, height: 120), resizing: ResizingBehavior = .aspectFit, knobValue: CGFloat = 0.5) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
+        
+        //// Resize to Target Frame
+        context.saveGState()
+        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 120, height: 120), target: targetFrame)
+        context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
+        context.scaleBy(x: resizedFrame.width / 120, y: resizedFrame.height / 120)
+        let resizedShadowScale: CGFloat = min(resizedFrame.width / 120, resizedFrame.height / 120)
+
 
         //// Color Declarations
         let black = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
@@ -53,30 +62,30 @@ public class KnobStyleKit : NSObject {
 
         //// Knob
         context.saveGState()
-        context.translateBy(x: frame.minX + 0.50000 * frame.width, y: frame.minY + 0.50000 * frame.height)
+
 
 
         //// BlackBackground Drawing
-        let blackBackgroundPath = UIBezierPath(ovalIn: CGRect(x: -60, y: -60, width: 120, height: 120))
+        let blackBackgroundPath = UIBezierPath(ovalIn: CGRect(x: -1, y: -1, width: 120, height: 120))
         black.setFill()
         blackBackgroundPath.fill()
 
 
         //// GradientKnob 2 Drawing
-        let gradientKnob2Path = UIBezierPath(ovalIn: CGRect(x: -51, y: -51, width: 102, height: 102))
+        let gradientKnob2Path = UIBezierPath(ovalIn: CGRect(x: 8, y: 8, width: 102, height: 102))
         context.saveGState()
         gradientKnob2Path.addClip()
-        context.drawLinearGradient(lowerKnobGradient2, start: CGPoint(x: -0, y: 51), end: CGPoint(x: 0, y: -51), options: [])
+        context.drawLinearGradient(lowerKnobGradient2, start: CGPoint(x: 59, y: 110), end: CGPoint(x: 59, y: 8), options: [])
         context.restoreGState()
 
 
         //// GradientKnob Drawing
-        let gradientKnobPath = UIBezierPath(ovalIn: CGRect(x: -45, y: -45, width: 90, height: 90))
+        let gradientKnobPath = UIBezierPath(ovalIn: CGRect(x: 14, y: 14, width: 90, height: 90))
         context.saveGState()
-        context.setShadow(offset: shadow2.shadowOffset, blur: shadow2.shadowBlurRadius, color: (shadow2.shadowColor as! UIColor).cgColor)
+        context.setShadow(offset: CGSize(width: shadow2.shadowOffset.width * resizedShadowScale, height: shadow2.shadowOffset.height * resizedShadowScale), blur: shadow2.shadowBlurRadius * resizedShadowScale, color: (shadow2.shadowColor as! UIColor).cgColor)
         context.beginTransparencyLayer(auxiliaryInfo: nil)
         gradientKnobPath.addClip()
-        context.drawLinearGradient(edge2, start: CGPoint(x: -0, y: 45), end: CGPoint(x: 0, y: -45), options: [])
+        context.drawLinearGradient(edge2, start: CGPoint(x: 59, y: 104), end: CGPoint(x: 59, y: 14), options: [])
         context.endTransparencyLayer()
 
         ////// GradientKnob Inner Shadow
@@ -86,7 +95,7 @@ public class KnobStyleKit : NSObject {
         context.setAlpha((shadow3.shadowColor as! UIColor).cgColor.alpha)
         context.beginTransparencyLayer(auxiliaryInfo: nil)
         let gradientKnobOpaqueShadow = (shadow3.shadowColor as! UIColor).withAlphaComponent(1)
-        context.setShadow(offset: shadow3.shadowOffset, blur: shadow3.shadowBlurRadius, color: gradientKnobOpaqueShadow.cgColor)
+        context.setShadow(offset: CGSize(width: shadow3.shadowOffset.width * resizedShadowScale, height: shadow3.shadowOffset.height * resizedShadowScale), blur: shadow3.shadowBlurRadius * resizedShadowScale, color: gradientKnobOpaqueShadow.cgColor)
         context.setBlendMode(.sourceOut)
         context.beginTransparencyLayer(auxiliaryInfo: nil)
 
@@ -104,11 +113,12 @@ public class KnobStyleKit : NSObject {
         //// IndicatorGroup
         //// Indicator Drawing
         context.saveGState()
+        context.translateBy(x: 59, y: 59)
         context.rotate(by: -(knobAngle - 240) * CGFloat.pi/180)
 
-        let indicatorPath = UIBezierPath(rect: CGRect(x: -3, y: -46, width: 6, height: 17))
+        let indicatorPath = UIBezierPath(rect: CGRect(x: -3, y: -45, width: 6, height: 17))
         context.saveGState()
-        context.setShadow(offset: shadow4.shadowOffset, blur: shadow4.shadowBlurRadius, color: (shadow4.shadowColor as! UIColor).cgColor)
+        context.setShadow(offset: CGSize(width: shadow4.shadowOffset.width * resizedShadowScale, height: shadow4.shadowOffset.height * resizedShadowScale), blur: shadow4.shadowBlurRadius * resizedShadowScale, color: (shadow4.shadowColor as! UIColor).cgColor)
         orange2.setFill()
         indicatorPath.fill()
         context.restoreGState()
@@ -121,8 +131,52 @@ public class KnobStyleKit : NSObject {
 
 
         context.restoreGState()
+        
+        context.restoreGState()
+
     }
 
+
+
+
+    @objc(KnobStyleKitResizingBehavior)
+    public enum ResizingBehavior: Int {
+        case aspectFit /// The content is proportionally resized to fit into the target rectangle.
+        case aspectFill /// The content is proportionally resized to completely fill the target rectangle.
+        case stretch /// The content is stretched to match the entire target rectangle.
+        case center /// The content is centered in the target rectangle, but it is NOT resized.
+
+        public func apply(rect: CGRect, target: CGRect) -> CGRect {
+            if rect == target || target == CGRect.zero {
+                return rect
+            }
+
+            var scales = CGSize.zero
+            scales.width = abs(target.width / rect.width)
+            scales.height = abs(target.height / rect.height)
+
+            switch self {
+                case .aspectFit:
+                    scales.width = min(scales.width, scales.height)
+                    scales.height = scales.width
+                case .aspectFill:
+                    scales.width = max(scales.width, scales.height)
+                    scales.height = scales.width
+                case .stretch:
+                    break
+                case .center:
+                    scales.width = 1
+                    scales.height = 1
+            }
+
+            var result = rect.standardized
+            result.size.width *= scales.width
+            result.size.height *= scales.height
+            result.origin.x = target.minX + (target.width - result.width) / 2
+            result.origin.y = target.minY + (target.height - result.height) / 2
+            return result
+        }
+    }
 }
 
 
