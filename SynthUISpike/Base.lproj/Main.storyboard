@@ -21,11 +21,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="337"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DJU-Fx-KsR" customClass="KnobView" customModule="SynthUISpike" customModuleProvider="target">
-                                <rect key="frame" x="175" y="103" width="130" height="130"/>
+                            <view tag="100" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DJU-Fx-KsR" customClass="KnobView" customModule="SynthUISpike" customModuleProvider="target">
+                                <rect key="frame" x="155" y="103" width="130" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <view tag="101" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7A7-28-Zh2" customClass="KnobView" customModule="SynthUISpike" customModuleProvider="target">
+                                <rect key="frame" x="354" y="113" width="110" height="110"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Knob Value: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iCj-20-bn8">
+                                <rect key="frame" x="231" y="38" width="179" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                <color key="textColor" red="0.90196078431372551" green="0.53333333333333333" blue="0.0078431372549019607" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.21176470588235294" green="0.20784313725490194" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
@@ -33,7 +45,9 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="1024" height="337"/>
                     <connections>
-                        <outlet property="myKnob" destination="DJU-Fx-KsR" id="g8M-7f-yJE"/>
+                        <outlet property="displayLabel" destination="iCj-20-bn8" id="UtE-vd-65M"/>
+                        <outlet property="knobOne" destination="DJU-Fx-KsR" id="R5h-tc-9Hx"/>
+                        <outlet property="knobTwo" destination="7A7-28-Zh2" id="cJr-dX-jRB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

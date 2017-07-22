@@ -8,8 +8,14 @@
 
 import UIKit
 
+protocol KnobDelegate {
+    func updateKnobValue(_ value: Double, tag: Int)
+}
+
 @IBDesignable
 class KnobView: UIView {
+    
+    var delegate: KnobDelegate?
 
     var minimum = 0.0 {
         didSet {
@@ -85,6 +91,8 @@ class KnobView: UIView {
         
         lastX = touchPoint.x
         lastY = touchPoint.y
+        
+        delegate?.updateKnobValue(value, tag: self.tag)
     }
     
 }
